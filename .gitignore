@@ -15,6 +15,7 @@
 # vendor/
 
 ignore.md
+.env
 pbr-th
 logo.png
 Arquitectura.key
