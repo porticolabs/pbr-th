@@ -3,10 +3,6 @@ services:
   pbr-th:
     build: .
     environment:
-      CONSUMER_KEY: "Sz0PQuQdRWHMhn5mJvB1nVQx6"
-      CONSUMER_SECRET: "ZS0W0AewWiXK5xZij0wZ3lysm64ogEwMJ04WIhAXKcGQniXdkf"
-      ACCESS_TOKEN: "899053842263928833-T4uweZJcJDYcCnmLI5weIimAK7m6uGC"
-      ACCESS_TOKEN_SECRET: "VBE0km9YprscFZevTPini68liIDcgpEnSMRK4thZ8svEP"
       TWITTER_LANGUAGE: "es"
       TWITTER_HASHTAG: "#example"
       TWITTER_SAMPLE: "true"
