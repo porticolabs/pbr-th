@@ -71,10 +71,10 @@ func main() {
 	loginToTwitter(&twitterCreds)
     
 	log.Debug("Creating Twitter Stream")
-	stream, _ := createStream(twitterHashtag, twitterLanguage, twitterSampleStream)
+	stream, _ := createStream()
     
 	log.Debug("Creating Twitter Stream Demux")
-	demux := createDemux(twitterHashtag, twitterSampleStream)
+	demux := createDemux()
 	
     log.Debug("Connecting to Redis")
     loginToRedis(redisCreds)

@@ -63,22 +63,23 @@ func loginToTwitter(creds *TwitterCredentials){
 	log.Info("Logged in as User: " + user.Name)
 }
 
-func createStream(hashtag string, language string, sample bool) (*twitter.Stream, error){
+func createStream() (*twitter.Stream, error){
 
-    if (sample){
+    if (twitterSampleStream){
         params := &twitter.StreamSampleParams{
             StallWarnings: twitter.Bool(true),
+            Language: []string{twitterLanguage},
         }
         return client.Streams.Sample(params)
     } else {
         params := &twitter.StreamFilterParams{
-            Track: []string{hashtag},
-            Language: []string{language},
+            Track: []string{twitterHashtag},
+            Language: []string{twitterLanguage},
             StallWarnings: twitter.Bool(true),
         }
         log.WithFields(log.Fields{
-            "hashtag":    hashtag,
-            "language": language,
+            "hashtag": twitterHashtag,
+            "language": twitterLanguage,
         }).Debug("Stream initiated")
         return client.Streams.Filter(params)
     }
