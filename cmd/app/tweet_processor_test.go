@@ -8,6 +8,7 @@ func init(){
 	user = &twitter.User{
 		ScreenName: "NeoCba",
 	}
+	twitterHashtag = "#quieroscifi"
 }
 
 func TestGetTweetTextShort(t *testing.T){
@@ -64,6 +65,33 @@ func TestShouldFilterTweetSameUser(t *testing.T){
 		Truncated: true,
 		ExtendedTweet: &twitter.ExtendedTweet{FullText: "Hola @poticocba, necesito mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho scifi #quieroscifi"},
         User: &twitter.User{ ScreenName: "NeoCba"}, 
+    } 
+	if shouldFilterTweet(&testTweet) == false {
+		t.Fatal("Tweet wasn't filtered but it should have.")
+	}
+}
+
+func TestShouldFilterTweetNoHashtag(t *testing.T){
+	testTweet := twitter.Tweet{ 
+		CreatedAt: "",
+		ID: 126,
+		Text: "RT: @robertito, esto está genial",
+		Truncated: false,
+		User: &twitter.User{ ScreenName: "Tototo"}, 
+    } 
+	if shouldFilterTweet(&testTweet) == false {
+		t.Fatal("Tweet wasn't filtered but it should have.")
+	}
+}
+
+func TestShouldFilterTweetRT(t *testing.T){
+	testTweet := twitter.Tweet{ 
+		CreatedAt: "",
+		ID: 127,
+		Text: "RT: @robertito, esto está genial",
+		Truncated: false,
+		RetweetedStatus: &twitter.Tweet{ Text: "Necesito ciencia ficción del a buena, #quieroscifi" },
+		User: &twitter.User{ ScreenName: "Tototo"}, 
     } 
 	if shouldFilterTweet(&testTweet) == false {
 		t.Fatal("Tweet wasn't filtered but it should have.")

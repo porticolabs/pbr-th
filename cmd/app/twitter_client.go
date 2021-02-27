@@ -53,6 +53,9 @@ func getTwitterClient(creds *TwitterCredentials) (*twitter.Client, *twitter.User
     return client, user, nil
 }
 
+// Uses the twitter login data to authenticate with the 
+//  Twitter API and stores the connection object in a
+//  global variable
 func loginToTwitter(creds *TwitterCredentials){
 	var err error
 	client, user, err = getTwitterClient(creds)
@@ -63,6 +66,8 @@ func loginToTwitter(creds *TwitterCredentials){
 	log.Info("Logged in as User: " + user.Name)
 }
 
+// Uses the twitter connection to create a filtered stream
+//  to read tweets with the specified hashtag in them
 func createStream() (*twitter.Stream, error){
 
     if (twitterSampleStream){
