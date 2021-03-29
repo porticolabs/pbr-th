@@ -17,5 +17,8 @@
 ignore.md
 .env
 app
+!cmd/app
 logo.png
 Arquitectura.key
+
+**/.DS_Store

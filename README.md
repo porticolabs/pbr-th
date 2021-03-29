@@ -1,4 +1,4 @@
-# Portico Bot R: Twitter Hashtags
+# Twitter Hashtag Recompiler Bot (PBR-TH)
 
 A Tiwtter bot that listen to a single Hashtag, run some filter rules, and then send them to a Redis Queue.
 
@@ -6,9 +6,15 @@ A Tiwtter bot that listen to a single Hashtag, run some filter rules, and then s
 
 The goal behind this tweeter bot is to give tweeter users the oportunity of asking for random recommendentions about certain topics to be define by the hashtag the bot is filtering. For instance, you could have the bot to respond with a random Simpsons Quote everytime someone tweet with hashtag #WhatWouldHomerDo. ¯\\_(ツ)_/¯
 
+## Architecture
+
+![PBR-TH Architecture Chart](img/architecture.jpeg)
+
 ## Development
 
-Since
+Since the Twitter credentias are sensitve data, they are not pushed in plain text but encrypted using [git-secrets](https://github.com/awslabs/git-secrets#description).
+
+To run the service from local, follow these steps:
 
 1. Decrypt the `.env.secret` file
 

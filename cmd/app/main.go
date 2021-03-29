@@ -52,6 +52,7 @@ func init() {
     twitterHashtag = os.Getenv("TWITTER_HASHTAG")
     twitterLanguage = os.Getenv("TWITTER_LANGUAGE")
 
+    // Run twitter interaction using samples
     twitterSampleStream, _ = strconv.ParseBool(os.Getenv("TWITTER_SAMPLE"))
     
     // Getting the Redis credentials from env
@@ -64,7 +65,7 @@ func init() {
 
 func main() {
     // Startup Information
-    log.Infof("Initiating PBR (Twiiter Hashtags) v%s", version)
+    log.Infof("Initiating PBR (Twitter Hashtags) v%s", version)
     log.Infof(" * Commit Hash: %s", sha1ver)
     log.Infof(" * Build Date: %s", buildTime)
 	
