@@ -15,6 +15,10 @@
 # vendor/
 
 ignore.md
-pbr-th
+.env
+app
+!cmd/app
 logo.png
 Arquitectura.key
+
+**/.DS_Store
