@@ -43,7 +43,7 @@ func TestGetTweetTextLong(t *testing.T){
 	}
 }
 
-func TestShouldFilterTweetOK(t *testing.T){
+func TestShouldFilterTruncatedTweetOK(t *testing.T){
 	testTweet := twitter.Tweet{ 
 		CreatedAt: "",
 		ID: 125,
@@ -51,6 +51,19 @@ func TestShouldFilterTweetOK(t *testing.T){
 		Truncated: true,
 		ExtendedTweet: &twitter.ExtendedTweet{FullText: "Hola @poticocba, necesito mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho mucho scifi #quieroscifi"},
         User: &twitter.User{ ScreenName: "PepePapa"}, 
+    } 
+	if shouldFilterTweet(&testTweet) == true {
+		t.Fatal("Tweet was filtered but it shouldn't have.")
+	}
+}
+
+func TestShouldFilterTweetOK(t *testing.T){
+	testTweet := twitter.Tweet{ 
+		CreatedAt: "",
+		ID: 125,
+		Text: "probando @NeoCba, #quieroscifi",
+		Truncated: false,
+		User: &twitter.User{ ScreenName: "PepePapa"}, 
     } 
 	if shouldFilterTweet(&testTweet) == true {
 		t.Fatal("Tweet was filtered but it shouldn't have.")

@@ -30,7 +30,7 @@ func processTweet(tweet *twitter.Tweet) {
 	// Check if a Sample Stream is being used, in which case
 	//  it won't filter any tweets, otherwise, will run a few
 	//  checks to decide if the tweet should continue its way
-	if (!twitterSampleStream || shouldFilterTweet(tweet)) {
+	if (twitterSampleStream || shouldFilterTweet(tweet)) {
 		log.WithFields(log.Fields{
 			"tweetText":    tweetText,
 			"tweetID":    tweet.ID,
